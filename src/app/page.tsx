@@ -17,13 +17,16 @@ export default function Home() {
     try {
       setIsLoading(true)
 
-      const response = await fetch('http://localhost:3000/api/convert', {
-        method: 'POST',
-        body: JSON.stringify({ value }),
-        headers: {
-          'Content-Type': 'application/json',
+      const response = await fetch(
+        `${process.env.NEXT_PUBLIC_URI_API}/convert`,
+        {
+          method: 'POST',
+          body: JSON.stringify({ value }),
+          headers: {
+            'Content-Type': 'application/json',
+          },
         },
-      })
+      )
 
       const data = await response.json()
 
